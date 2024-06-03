@@ -1,3 +1,12 @@
-<h1>{{title}}</h1>
-
-<router-outlet />
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" [routerLink]="['/']">{{title}}</a>
+        <div class="navbar-nav mr-auto">
+            <a class="nav-link" [routerLink]="['/']">Vrijeme</a>
+            <a class="nav-link" [routerLink]="['/settings']">Postavke</a>
+        </div>
+    </nav>
+</div>
+<div class="container" style="padding: 20px">
+    <router-outlet />
+</div>

@@ -1,11 +1,11 @@
 <div class="card" style="width: 24rem;" *ngIf="weather">
     <h4 class="card-header">
-        {{weather.name}}
+        {{weather.name | uppercase}}
     </h4>
     <div class="card-body">
-        <h5 class="card-title" >{{ description }}</h5>
+        <h5 class="card-title" >{{ weather.description | uppercase }}</h5>
         <div class="card-text">
-            <p>Temperatura: {{weather.temp}}</p>
+            <p>Temperatura: {{weather.temp | number:'1.0-0'}} {{weather.tempMeasure}}</p>
             <p>Vlažnost zraka: {{weather.humidity}}%</p>
             <p>Tlak: {{weather.pressure}} hpa</p>
         </div>

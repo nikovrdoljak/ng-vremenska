@@ -1,0 +1,29 @@
+<h3>Postavke</h3>
+
+<div class="col-4">
+    <form [formGroup]="settingsForm" (submit)="submitSettings()">
+        <div class="mb-3">
+            <label for="city" class="form-label">Grad</label>
+            <input id="city" type="text" formControlName="city" class="form-control" />
+            <div *ngIf="settingsForm.get('city')?.invalid && (settingsForm.get('city')?.dirty || settingsForm.get('city')?.touched)">
+                <span *ngIf="settingsForm.get('city')?.errors?.['required']" class="small text-danger">Upišite grad.</span>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="lang" class="form-label">Jezik</label>
+            <select id="lang" formControlName="lang" class="form-select">
+                <option value="hr">Hrvatski</option>
+                <option value="en">English</option>
+            </select>
+
+        </div>
+        <div class="mb-3">
+            <label for="units" class="form-label">Jedinice</label>
+            <select id="units" formControlName="units" class="form-select">
+                <option value="metric">Metric</option>
+                <option value="imperial">Imperial</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!settingsForm.valid">Spremi</button>
+    </form>
+</div>
