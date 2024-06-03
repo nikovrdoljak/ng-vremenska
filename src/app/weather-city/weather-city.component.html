@@ -1,3 +1,13 @@
- <h3>{{ city }}</h3>
- <p>{{ description }}</p>
- TEST
+<div class="card" style="width: 24rem;" *ngIf="weather">
+    <h4 class="card-header">
+        {{weather.name}}
+    </h4>
+    <div class="card-body">
+        <h5 class="card-title" >{{ description }}</h5>
+        <div class="card-text">
+            <p>Temperatura: {{weather?.main?.temp}}</p>
+            <p>Vlažnost zraka: {{weather?.main?.humidity}}%</p>
+            <p>Tlak: {{weather?.main?.pressure}} hpa</p>
+        </div>
+    </div>
+</div>
