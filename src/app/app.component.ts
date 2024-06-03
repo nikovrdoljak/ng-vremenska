@@ -13,5 +13,5 @@ import { RouterOutlet } from '@angular/router';
   styles: [],
 })
 export class AppComponent {
-  title = 'Vremenska progrnoza';
+  title = 'Vremenska prognoza';
 }
