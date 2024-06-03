@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Weather } from './weather';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class WeatherService {
 
   constructor() { }
 
-  async getWeatherByCity(): Promise<any> {
+  async getWeatherByCity(): Promise<Weather> {
     let response: any;
     
     const city:string = 'zadar';
@@ -16,6 +17,17 @@ export class WeatherService {
     const url: string = `https://api.openweathermap.org/data/2.5/weather?${new URLSearchParams(parameters).toString()}`;
     const data = await fetch(url);
     const dataJson =  (await data.json()) ?? {};
-    return dataJson;
+    return this.translateWeather(dataJson);
+  }
+
+  translateWeather(data: any): Weather {
+    const weather: Weather = {
+      name:  data.name,
+      description:  data?.weather[0]?.description,
+      temp: data?.main?.temp,
+      humidity:  data?.main?.humidity,
+      pressure:  data?.main?.pressure,
+    }
+    return weather;
   }
 }

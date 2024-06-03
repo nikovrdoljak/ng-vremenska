@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { CommonModule } from '@angular/common';
+import { Weather } from '../weather';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './weather-city.component.css'
 })
 export class WeatherCityComponent {
-  weather: any = {};
+  weather!: Weather;
   description: string = '';
   city = '';
   weatherService: WeatherService = inject(WeatherService);
@@ -19,8 +20,6 @@ export class WeatherCityComponent {
   ngOnInit(): void { 
     this.weatherService.getWeatherByCity().then((data) => {
       this.weather = data;
-      this.city = data.name;
-      this.description = data?.weather[0]?.description;
     });
   }
 
